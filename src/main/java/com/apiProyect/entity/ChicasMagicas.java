@@ -1,50 +1,36 @@
 package com.apiProyect.entity;
 
-import java.util.Date;
 import jakarta.persistence.*;
+import java.util.Date;
 
 @Entity
 @Table(name = "chicas_magicas")
 public class ChicasMagicas {
-
+    
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private Long id;
 
+    @Column(nullable = false)
     private String nombre;
-    private Integer edad;
-    
-    @Column(length = 50)
-    private String ciudadOrigen;
-    
-    @Column(unique = true, length = 20)
-    private String identificadorMagico;
-    
-    @Enumerated(EnumType.STRING)
-    @Column(length = 20)
-    private EstadoChica estadoActual; // Enum para manejar estados
 
+    @Column(nullable = false)
+    private int edad;
+
+    @Column(name = "ciudad_origen", nullable = false)
+    private String ciudadOrigen;
+
+    @Column(name = "estado_actual", nullable = false)
+    private String estadoActual; // Se guarda como String
+
+    @Column(name = "fecha_contrato", nullable = false)
     private Date fechaContrato;
 
-    // Constructor vacío
-    public ChicasMagicas() {}
-
-    // Constructor con parámetros
-    public ChicasMagicas(String nombre, Integer edad, String ciudadOrigen, String identificadorMagico, EstadoChica estadoActual, Date fechaContrato) {
-        this.nombre = nombre;
-        this.edad = edad;
-        this.ciudadOrigen = ciudadOrigen;
-        this.identificadorMagico = identificadorMagico;
-        this.estadoActual = estadoActual;
-        this.fechaContrato = fechaContrato;
-    }
-
-    // Getters y Setters
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -56,11 +42,11 @@ public class ChicasMagicas {
         this.nombre = nombre;
     }
 
-    public Integer getEdad() {
+    public int getEdad() {
         return edad;
     }
 
-    public void setEdad(Integer edad) {
+    public void setEdad(int edad) {
         this.edad = edad;
     }
 
@@ -72,19 +58,11 @@ public class ChicasMagicas {
         this.ciudadOrigen = ciudadOrigen;
     }
 
-    public String getIdentificadorMagico() {
-        return identificadorMagico;
-    }
-
-    public void setIdentificadorMagico(String identificadorMagico) {
-        this.identificadorMagico = identificadorMagico;
-    }
-
-    public EstadoChica getEstadoActual() {
+    public String getEstadoActual() {
         return estadoActual;
     }
 
-    public void setEstadoActual(EstadoChica estadoActual) {
+    public void setEstadoActual(String estadoActual) {
         this.estadoActual = estadoActual;
     }
 
@@ -95,4 +73,4 @@ public class ChicasMagicas {
     public void setFechaContrato(Date fechaContrato) {
         this.fechaContrato = fechaContrato;
     }
-}
+   }
